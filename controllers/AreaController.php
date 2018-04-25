@@ -28,16 +28,16 @@ class AreaController extends Controller{
         if (!in_array($area,$this->cityList())){
            return json_encode('没有您查到的城市记录');
         }
-        $resList['content']['Java'] = JavaJobs::find()->where(['city'=>$area])->count();
-        $resList['content']['Python'] = PythonJobs::find()->where(['city'=>$area])->count();
-        $resList['content']['C++'] = CplusJobs::find()->where(['city'=>$area])->count();
-        $resList['content']['PHP'] = HypertextPreprocessorJobs::find()->where(['city'=>$area])->count();
-        $resList['content']['IOS'] = IosJobs::find()->where(['city'=>$area])->count();
-        $resList['content']['Web'] = WebJobs::find()->where(['city'=>$area])->count();
-        $resList['content']['大数据'] = BigdataJobs::find()->where(['city'=>$area])->count();
-        $resList['content']['数据挖掘'] = DataMiningJobs::find()->where(['city'=>$area])->count();
-        $resList['content']['产品经理'] = ProgramManagerJobs::find()->where(['city'=>$area])->count();
-        $resList['content']['机器学习'] = MlJobs::find()->where(['city'=>$area])->count();
+        $resList['content']['Java'] = (int)JavaJobs::find()->where(['city'=>$area])->count();
+        $resList['content']['Python'] = (int)PythonJobs::find()->where(['city'=>$area])->count();
+        $resList['content']['C++'] = (int)CplusJobs::find()->where(['city'=>$area])->count();
+        $resList['content']['PHP'] = (int)HypertextPreprocessorJobs::find()->where(['city'=>$area])->count();
+        $resList['content']['IOS'] = (int)IosJobs::find()->where(['city'=>$area])->count();
+        $resList['content']['Web'] = (int)WebJobs::find()->where(['city'=>$area])->count();
+        $resList['content']['大数据'] = (int)BigdataJobs::find()->where(['city'=>$area])->count();
+        $resList['content']['数据挖掘'] = (int)DataMiningJobs::find()->where(['city'=>$area])->count();
+        $resList['content']['产品经理'] = (int)ProgramManagerJobs::find()->where(['city'=>$area])->count();
+        $resList['content']['机器学习'] = (int)MlJobs::find()->where(['city'=>$area])->count();
         $total = 0;
         foreach ($resList['content'] as $item => $value){
             $total += $value;

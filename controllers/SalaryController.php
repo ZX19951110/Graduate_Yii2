@@ -23,35 +23,35 @@ class SalaryController extends Controller{
     public function actionShow(){
         $job = Yii::$app->request->get('job');
         switch ($job)
-        {
-            case 'java':
-                $cityList = JavaJobs::findBySql('select city from java group by city')->asArray()->all();
-                $resList = [];
-                foreach ($cityList as $city) {
-                    $salaryList = JavaJobs::find()->select('salary')->where(['city' => $city])->asArray()->all();
-                    foreach ($salaryList as $salary) {
-                        preg_match_all("/\d{1,2}/", $salary['salary'], $salaryRange);
-                        $lower[] = (int)$salaryRange[0][0];
-                    }
-                    $Sum = 0;
-                    foreach ($lower as $low) {
-                        $Sum += $low;
-                    }
-                    $salary = round($Sum / count($lower));
-                    $lower = [];
-                    $resList[] = ['city' => $city, 'salary' => $salary];
-                }
-                    return json_encode($resList);
-                    break;
-            case 'python':
-                $cityList = PythonJobs::findBySql('select city from python group by city')->asArray()->all();
-                $resList = [];
-                foreach ($cityList as $city) {
-                    $salaryList = PythonJobs::find()->select('salary')->where(['city' => $city])->asArray()->all();
-                    foreach ($salaryList as $salary) {
-                        preg_match_all("/\d{1,2}/", $salary['salary'], $salaryRange);
-                        $lower[] = (int)$salaryRange[0][0];
-                    }
+                    {
+                        case 'java':
+                            $cityList = JavaJobs::findBySql('select city from java group by city')->asArray()->all();
+                            $resList = [];
+                            foreach ($cityList as $city) {
+                                $salaryList = JavaJobs::find()->select('salary')->where(['city' => $city])->asArray()->all();
+                                foreach ($salaryList as $salary) {
+                                    preg_match_all("/\d{1,2}/", $salary['salary'], $salaryRange);
+                                    $lower[] = (int)$salaryRange[0][0];
+                                }
+                                $Sum = 0;
+                                foreach ($lower as $low) {
+                                    $Sum += $low;
+                                }
+                                $salary = round($Sum / count($lower));
+                                $lower = [];
+                                $resList[] = ['city' => $city, 'salary' => $salary];
+                            }
+                            return json_encode($resList);
+                            break;
+                        case 'python':
+                            $cityList = PythonJobs::findBySql('select city from python group by city')->asArray()->all();
+                            $resList = [];
+                            foreach ($cityList as $city) {
+                                $salaryList = PythonJobs::find()->select('salary')->where(['city' => $city])->asArray()->all();
+                                foreach ($salaryList as $salary) {
+                                    preg_match_all("/\d{1,2}/", $salary['salary'], $salaryRange);
+                                    $lower[] = (int)$salaryRange[0][0];
+                                }
                     $Sum = 0;
                     foreach ($lower as $low) {
                         $Sum += $low;
