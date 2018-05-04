@@ -28,7 +28,7 @@ class SalaryController extends Controller{
                             $cityList = JavaJobs::findBySql('select city from java group by city')->asArray()->all();
                             $resList = [];
                             foreach ($cityList as $city) {
-                                $salaryList = JavaJobs::find()->select('salary')->where(['city' => $city])->asArray()->all();
+                                $salaryList = JavaJobs::find()->select('salary')->where(['city' => $city['city']])->asArray()->all();
                                 foreach ($salaryList as $salary) {
                                     preg_match_all("/\d{1,2}/", $salary['salary'], $salaryRange);
                                     $lower[] = (int)$salaryRange[0][0];
@@ -39,15 +39,16 @@ class SalaryController extends Controller{
                                 }
                                 $salary = round($Sum / count($lower));
                                 $lower = [];
-                                $resList[] = ['city' => $city, 'salary' => $salary];
+                                $resList[] = ['city' => $city['city'], 'salary' => $salary];
                             }
+                            header('Access-Control-Allow-Origin: *');
                             return json_encode($resList);
                             break;
                         case 'python':
                             $cityList = PythonJobs::findBySql('select city from python group by city')->asArray()->all();
                             $resList = [];
                             foreach ($cityList as $city) {
-                                $salaryList = PythonJobs::find()->select('salary')->where(['city' => $city])->asArray()->all();
+                                $salaryList = PythonJobs::find()->select('salary')->where(['city' => $city['city']])->asArray()->all();
                                 foreach ($salaryList as $salary) {
                                     preg_match_all("/\d{1,2}/", $salary['salary'], $salaryRange);
                                     $lower[] = (int)$salaryRange[0][0];
@@ -58,15 +59,16 @@ class SalaryController extends Controller{
                     }
                     $salary = round($Sum / count($lower));
                     $lower = [];
-                    $resList[] = ['city' => $city, 'salary' => $salary];
+                    $resList[] = ['city' => $city['city'], 'salary' => $salary];
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
                 break;
             case 'php':
                 $cityList = HypertextPreprocessorJobs::findBySql('select city from php group by city')->asArray()->all();
                 $resList = [];
                 foreach ($cityList as $city) {
-                    $salaryList = HypertextPreprocessorJobs::find()->select('salary')->where(['city' => $city])->asArray()->all();
+                    $salaryList = HypertextPreprocessorJobs::find()->select('salary')->where(['city' => $city['city']])->asArray()->all();
                     foreach ($salaryList as $salary) {
                         preg_match_all("/\d{1,2}/", $salary['salary'], $salaryRange);
                         $lower[] = (int)$salaryRange[0][0];
@@ -77,8 +79,9 @@ class SalaryController extends Controller{
                     }
                     $salary = round($Sum / count($lower));
                     $lower = [];
-                    $resList[] = ['city' => $city, 'salary' => $salary];
+                    $resList[] = ['city' => $city['city'], 'salary' => $salary];
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
                 break;
             case 'ios':
@@ -96,8 +99,9 @@ class SalaryController extends Controller{
                     }
                     $salary = round($Sum / count($lower));
                     $lower = [];
-                    $resList[] = ['city' => $city, 'salary' => $salary];
+                    $resList[] = ['city' => $city['city'], 'salary' => $salary];
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
                 break;
             case 'web':
@@ -115,8 +119,9 @@ class SalaryController extends Controller{
                     }
                     $salary = round($Sum / count($lower));
                     $lower = [];
-                    $resList[] = ['city' => $city, 'salary' => $salary];
+                    $resList[] = ['city' => $city['city'], 'salary' => $salary];
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
                 break;
             case 'big-data':
@@ -134,8 +139,9 @@ class SalaryController extends Controller{
                     }
                     $salary = round($Sum / count($lower));
                     $lower = [];
-                    $resList[] = ['city' => $city, 'salary' => $salary];
+                    $resList[] = ['city' => $city['city'], 'salary' => $salary];
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
                 break;
             case 'c-plus':
@@ -153,8 +159,9 @@ class SalaryController extends Controller{
                     }
                     $salary = round($Sum / count($lower));
                     $lower = [];
-                    $resList[] = ['city' => $city, 'salary' => $salary];
+                    $resList[] = ['city' => $city['city'], 'salary' => $salary];
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
                 break;
             case 'data-mining':
@@ -172,8 +179,9 @@ class SalaryController extends Controller{
                     }
                     $salary = round($Sum / count($lower));
                     $lower = [];
-                    $resList[] = ['city' => $city, 'salary' => $salary];
+                    $resList[] = ['city' => $city['city'], 'salary' => $salary];
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
                 break;
             case 'program-manager':
@@ -191,8 +199,9 @@ class SalaryController extends Controller{
                     }
                     $salary = round($Sum / count($lower));
                     $lower = [];
-                    $resList[] = ['city' => $city, 'salary' => $salary];
+                    $resList[] = ['city' => $city['city'], 'salary' => $salary];
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
                 break;
             case 'm-l':
@@ -210,8 +219,9 @@ class SalaryController extends Controller{
                     }
                     $salary = round($Sum / count($lower));
                     $lower = [];
-                    $resList[] = ['city' => $city, 'salary' => $salary];
+                    $resList[] = ['city' => $city['city'], 'salary' => $salary];
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
                 break;
         }

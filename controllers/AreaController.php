@@ -43,7 +43,7 @@ class AreaController extends Controller{
             $total += $value;
         }
         $resList['total'] = $total;
-
+        header('Access-Control-Allow-Origin: *');
         return json_encode($resList);
     }
 }

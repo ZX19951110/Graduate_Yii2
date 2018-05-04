@@ -36,6 +36,7 @@ class WorkController extends Controller
                     $count += (int)$value;
                 }
                 $res['count'] = $count;
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($res);
                 break;
             case 'python':
@@ -46,6 +47,7 @@ class WorkController extends Controller
                     $count += (int)$value;
                 }
                 $res['count'] = $count;
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($res);
                 break;
             case 'php':
@@ -56,6 +58,7 @@ class WorkController extends Controller
                     $count += (int)$value;
                 }
                 $res['count'] = $count;
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($res);
                 break;
             case 'ios':
@@ -66,6 +69,7 @@ class WorkController extends Controller
                     $count += (int)$value;
                 }
                 $res['count'] = $count;
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($res);
                 break;
             case 'web':
@@ -76,6 +80,7 @@ class WorkController extends Controller
                     $count += (int)$value;
                 }
                 $res['count'] = $count;
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($res);
                 break;
             case 'big-data':
@@ -86,6 +91,7 @@ class WorkController extends Controller
                     $count += (int)$value;
                 }
                 $res['count'] = $count;
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($res);
                 break;
             case 'c-plus':
@@ -96,6 +102,7 @@ class WorkController extends Controller
                     $count += (int)$value;
                 }
                 $res['count'] = $count;
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($res);
                 break;
             case 'data-mining':
@@ -106,6 +113,7 @@ class WorkController extends Controller
                     $count += (int)$value;
                 }
                 $res['count'] = $count;
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($res);
                 break;
             case 'program-manager':
@@ -116,6 +124,7 @@ class WorkController extends Controller
                     $count += (int)$value;
                 }
                 $res['count'] = $count;
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($res);
                 break;
             case 'm-l':
@@ -126,8 +135,106 @@ class WorkController extends Controller
                     $count += (int)$value;
                 }
                 $res['count'] = $count;
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($res);
                 break;
+            default:
+                return json_encode(['您查找的信息不存在']);
+        }
+    }
+    public function actionEducation(){
+        $job = Yii::$app->request->get('job');
+        switch ($job){
+            case 'python':
+                $queryList = PythonJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
+                foreach ($queryList as $item){
+                    $educationList[] = $item['education'];
+                }
+                foreach ($educationList as $education){
+                    $resList[$education] = PythonJobs::find()->where(['education' => $education])->count();
+                }
+                return json_encode($resList);
+            case 'php':
+                $queryList = HypertextPreprocessorJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
+                foreach ($queryList as $item){
+                    $educationList[] = $item['education'];
+                }
+                foreach ($educationList as $education){
+                    $resList[$education] = HypertextPreprocessorJobs::find()->where(['education' => $education])->count();
+                }
+                return json_encode($resList);
+            case 'web':
+                $queryList = WebJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
+                foreach ($queryList as $item){
+                    $educationList[] = $item['education'];
+                }
+                foreach ($educationList as $education){
+                    $resList[$education] = WebJobs::find()->where(['education' => $education])->count();
+                }
+                return json_encode($resList);
+            case 'java':
+                $queryList = JavaJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
+                foreach ($queryList as $item){
+                    $educationList[] = $item['education'];
+                }
+                foreach ($educationList as $education){
+                    $resList[$education] = JavaJobs::find()->where(['education' => $education])->count();
+                }
+                return json_encode($resList);
+            case 'ios':
+                $queryList = IosJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
+                foreach ($queryList as $item){
+                    $educationList[] = $item['education'];
+                }
+                foreach ($educationList as $education){
+                    $resList[$education] = IosJobs::find()->where(['education' => $education])->count();
+                }
+                return json_encode($resList);
+            case 'c-plus':
+                $queryList = CPlusJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
+                foreach ($queryList as $item){
+                    $educationList[] = $item['education'];
+                }
+                foreach ($educationList as $education){
+                    $resList[$education] = CPlusJobs::find()->where(['education' => $education])->count();
+                }
+                return json_encode($resList);
+            case 'big-data':
+                $queryList = BigDataJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
+                foreach ($queryList as $item){
+                    $educationList[] = $item['education'];
+                }
+                foreach ($educationList as $education){
+                    $resList[$education] = BigDataJobs::find()->where(['education' => $education])->count();
+                }
+                return json_encode($resList);
+            case 'data-mining':
+                $queryList = DataMiningJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
+                foreach ($queryList as $item){
+                    $educationList[] = $item['education'];
+                }
+                foreach ($educationList as $education){
+                    $resList[$education] = DataMiningJobs::find()->where(['education' => $education])->count();
+                }
+                return json_encode($resList);
+            case 'program-manager':
+                $queryList = ProgramManagerJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
+                foreach ($queryList as $item){
+                    $educationList[] = $item['education'];
+                }
+                foreach ($educationList as $education){
+                    $resList[$education] = ProgramManagerJobs::find()->where(['education' => $education])->count();
+                }
+                return json_encode($resList);
+            case 'm-l':
+                $queryList = MlJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
+                foreach ($queryList as $item){
+                    $educationList[] = $item['education'];
+                }
+                foreach ($educationList as $education){
+                    $resList[$education] = MlJobs::find()->where(['education' => $education])->count();
+                }
+                return json_encode($resList);
             default:
                 return json_encode(['您查找的信息不存在']);
         }
