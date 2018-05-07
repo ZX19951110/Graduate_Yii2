@@ -18,7 +18,7 @@ use app\models\BigDataJobs;
 use app\models\DataMiningJobs;
 use app\models\ProgramManagerJobs;
 use app\models\MlJobs;
-/*todo: 各职业工作经验list*/
+
 class WorkController extends Controller
 {
     public function actionWorkyear()
@@ -153,6 +153,7 @@ class WorkController extends Controller
                 foreach ($educationList as $education){
                     $resList[$education] = PythonJobs::find()->where(['education' => $education])->count();
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
             case 'php':
                 $queryList = HypertextPreprocessorJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
@@ -162,6 +163,7 @@ class WorkController extends Controller
                 foreach ($educationList as $education){
                     $resList[$education] = HypertextPreprocessorJobs::find()->where(['education' => $education])->count();
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
             case 'web':
                 $queryList = WebJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
@@ -171,6 +173,7 @@ class WorkController extends Controller
                 foreach ($educationList as $education){
                     $resList[$education] = WebJobs::find()->where(['education' => $education])->count();
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
             case 'java':
                 $queryList = JavaJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
@@ -180,6 +183,7 @@ class WorkController extends Controller
                 foreach ($educationList as $education){
                     $resList[$education] = JavaJobs::find()->where(['education' => $education])->count();
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
             case 'ios':
                 $queryList = IosJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
@@ -189,6 +193,7 @@ class WorkController extends Controller
                 foreach ($educationList as $education){
                     $resList[$education] = IosJobs::find()->where(['education' => $education])->count();
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
             case 'c-plus':
                 $queryList = CPlusJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
@@ -198,6 +203,7 @@ class WorkController extends Controller
                 foreach ($educationList as $education){
                     $resList[$education] = CPlusJobs::find()->where(['education' => $education])->count();
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
             case 'big-data':
                 $queryList = BigDataJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
@@ -207,6 +213,7 @@ class WorkController extends Controller
                 foreach ($educationList as $education){
                     $resList[$education] = BigDataJobs::find()->where(['education' => $education])->count();
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
             case 'data-mining':
                 $queryList = DataMiningJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
@@ -216,6 +223,7 @@ class WorkController extends Controller
                 foreach ($educationList as $education){
                     $resList[$education] = DataMiningJobs::find()->where(['education' => $education])->count();
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
             case 'program-manager':
                 $queryList = ProgramManagerJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
@@ -225,6 +233,7 @@ class WorkController extends Controller
                 foreach ($educationList as $education){
                     $resList[$education] = ProgramManagerJobs::find()->where(['education' => $education])->count();
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
             case 'm-l':
                 $queryList = MlJobs::find()->select(['education'])->groupBy('education')->asArray()->all();
@@ -234,8 +243,10 @@ class WorkController extends Controller
                 foreach ($educationList as $education){
                     $resList[$education] = MlJobs::find()->where(['education' => $education])->count();
                 }
+                header('Access-Control-Allow-Origin: *');
                 return json_encode($resList);
             default:
+                header('Access-Control-Allow-Origin: *');
                 return json_encode(['您查找的信息不存在']);
         }
     }

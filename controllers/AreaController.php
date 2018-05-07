@@ -18,7 +18,7 @@ use app\models\BigDataJobs;
 use app\models\DataMiningJobs;
 use app\models\ProgramManagerJobs;
 use app\models\MlJobs;
-/*todo: 统计各个城市每个职业所占比例*/
+
 class AreaController extends Controller{
     protected function cityList(){
         return ['北京', '上海', '广州', '深圳', '成都', '武汉', '杭州', '南京', '西安'];

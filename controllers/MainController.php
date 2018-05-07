@@ -18,6 +18,7 @@ use app\models\BigDataJobs;
 use app\models\DataMiningJobs;
 use app\models\ProgramManagerJobs;
 use app\models\MlJobs;
+
 class MainController extends Controller{
     public function actionJava(){
         $JavaJobs = new JavaJobs();
@@ -25,7 +26,6 @@ class MainController extends Controller{
         $JavaList = [];
         foreach ($CityList as $city){
             $JavaList[$city['city']]['count']= $JavaJobs::find()->where(['city' => $city['city']])->count();
-            $JavaList[$city['city']]['jobs'] = $JavaJobs::find()->where(['city' => $city['city']])->asArray()->all();
         }
         header('Access-Control-Allow-Origin: *');
         return json_encode($JavaList);
@@ -36,7 +36,6 @@ class MainController extends Controller{
         $PythonList = [];
         foreach ($CityList as $city){
             $PythonList[$city['city']]['count']= $PythonJobs::find()->where(['city' => $city['city']])->count();
-            $PythonList[$city['city']]['jobs'] = $PythonJobs::find()->where(['city' => $city['city']])->asArray()->all();
         }
         header('Access-Control-Allow-Origin: *');
         return json_encode($PythonList);
@@ -47,7 +46,6 @@ class MainController extends Controller{
         $CPlusList = [];
         foreach ($CityList as $city){
             $CPlusList[$city['city']]['count']= $CPlusJobs::find()->where(['city' => $city['city']])->count();
-            $CPlusList[$city['city']]['jobs'] = $CPlusJobs::find()->where(['city' => $city['city']])->asArray()->all();
         }
         header('Access-Control-Allow-Origin: *');
         return json_encode($CPlusList);
@@ -58,7 +56,6 @@ class MainController extends Controller{
         $PhpList = [];
         foreach ($CityList as $city){
             $PhpList[$city['city']]['count']= $PhpJobs::find()->where(['city' => $city['city']])->count();
-            $PhpList[$city['city']]['jobs'] = $PhpJobs::find()->where(['city' => $city['city']])->asArray()->all();
         }
         header('Access-Control-Allow-Origin: *');
         return json_encode($PhpList);
@@ -69,7 +66,6 @@ class MainController extends Controller{
         $IosList = [];
         foreach ($CityList as $city){
             $IosList[$city['city']]['count']= $IosJobs::find()->where(['city' => $city['city']])->count();
-            $IosList[$city['city']]['jobs'] = $IosJobs::find()->where(['city' => $city['city']])->asArray()->all();
         }
         header('Access-Control-Allow-Origin: *');
         return json_encode($IosList);
@@ -80,7 +76,6 @@ class MainController extends Controller{
         $WebList = [];
         foreach ($CityList as $city){
             $WebList[$city['city']]['count']= $WebJobs::find()->where(['city' => $city['city']])->count();
-            $WebList[$city['city']]['jobs'] = $WebJobs::find()->where(['city' => $city['city']])->asArray()->all();
         }
         header('Access-Control-Allow-Origin: *');
         return json_encode($WebList);
@@ -91,7 +86,6 @@ class MainController extends Controller{
         $BigDataList = [];
         foreach ($CityList as $city){
             $BigDataList[$city['city']]['count']= $BigDataJobs::find()->where(['city' => $city['city']])->count();
-            $BigDataList[$city['city']]['jobs'] = $BigDataJobs::find()->where(['city' => $city['city']])->asArray()->all();
         }
         header('Access-Control-Allow-Origin: *');
         return json_encode($BigDataList);
@@ -102,7 +96,6 @@ class MainController extends Controller{
         $DataMiningList = [];
         foreach ($CityList as $city){
             $DataMiningList[$city['city']]['count']= $DataMiningJobs::find()->where(['city' => $city['city']])->count();
-            $DataMiningList[$city['city']]['jobs'] = $DataMiningJobs::find()->where(['city' => $city['city']])->asArray()->all();
         }
         header('Access-Control-Allow-Origin: *');
         return json_encode($DataMiningList);
@@ -113,7 +106,6 @@ class MainController extends Controller{
         $ProgramManagerList = [];
         foreach ($CityList as $city){
             $ProgramManagerList[$city['city']]['count']= $ProgramManagerJobs::find()->where(['city' => $city['city']])->count();
-            $ProgramManagerList[$city['city']]['jobs'] = $ProgramManagerJobs::find()->where(['city' => $city['city']])->asArray()->all();
         }
         header('Access-Control-Allow-Origin: *');
         return json_encode($ProgramManagerList);
@@ -124,7 +116,6 @@ class MainController extends Controller{
         $MlList = [];
         foreach ($CityList as $city){
             $MlList[$city['city']]['count']= $MlJobs::find()->where(['city' => $city['city']])->count();
-            $MlList[$city['city']]['jobs'] = $MlJobs::find()->where(['city' => $city['city']])->asArray()->all();
         }
         header('Access-Control-Allow-Origin: *');
         return json_encode($MlList);
